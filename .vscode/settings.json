@@ -4,7 +4,7 @@
         {
             "cwd": "/home/lucas/Documents/loginuser",
             "binaryPath": "/home/lucas/Documents/loginuser/main",
-            "binaryArgs": ["signup"]
+            "binaryArgs": ["login"]
         }
     ],
     "files.associations": {

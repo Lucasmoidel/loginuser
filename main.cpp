@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <algorithm>
 #include <string>
 #include <unordered_map>
 #include <fstream>
@@ -26,15 +27,17 @@ int main(int argc, char *argv[]) {
             cin >> inppass;
             size_t hashpass = hasher(inppass);
             //cout << hashpass;
-            ifstream passes("passdb.txt");
-            while (getline (passes, filetext)) {
+            ifstream fpass;
+            fpass.open("passdb.txt", ios::in);
+            while (getline (fpass, filetext)) {
                 linecount++;
             }
             for (int i = 0; i < linecount; i++) {
-                getline(passes, filetext);
+                getline(fpass, filetext);
+                //replace( filetext.begin(), filetext.end(), '\n', '\0');
                 if (filetext == to_string(hashpass)) {
                     cout << "login succesful\n";
-                    passes.close();
+                    fpass.close();
                     return 0;
                 }
             }
@@ -44,10 +47,10 @@ int main(int argc, char *argv[]) {
             cout << "Password: ";
             cin >> inppass;
             size_t hashpass = hasher(inppass);
-            ofstream passes("passdb.txt");
-            fout
-            passes << to_string(hashpass) + "\n";
-            passes.close();
+            ofstream fpass;
+            fpass.open("passdb.txt", ios::app);
+            fpass << to_string(hashpass);
+            fpass.close();
             return 0;
 
 
