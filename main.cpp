@@ -7,10 +7,6 @@
 
 using namespace std;
 
-void signUp();
-
-void login();
-
 int main(int argc, char *argv[]) {
     string inpusername;
     hash<string> hasher;
